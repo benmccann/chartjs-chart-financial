@@ -46,6 +46,8 @@ var CandlestickElement = FinancialElement.extend({
 		ctx.lineWidth = helpers.getValueOrDefault(vm.borderWidth, globalOpts.elements.candlestick.borderWidth);
 		ctx.strokeStyle = helpers.getValueOrDefault(borderColor, globalOpts.elements.candlestick.borderColor);
 
+		ctx.translate(0.5, 0.5);
+
 		ctx.beginPath();
 		ctx.moveTo(x, h);
 		ctx.lineTo(x, Math.min(o, c));
@@ -55,6 +57,8 @@ var CandlestickElement = FinancialElement.extend({
 		ctx.fillRect(x - vm.width / 2, c, vm.width, o - c);
 		ctx.strokeRect(x - vm.width / 2, c, vm.width, o - c);
 		ctx.closePath();
+
+		ctx.translate(-0.5, -0.5);
 	},
 });
 

@@ -310,7 +310,6 @@ var CandlestickElement = FinancialElement.extend({
 		var c = vm.candleClose;
 
 		var borderColors = vm.borderColor;
-
 		if (typeof borderColors === 'string') {
 			borderColors = {
 				up: borderColors,
@@ -334,6 +333,8 @@ var CandlestickElement = FinancialElement.extend({
 		ctx.lineWidth = helpers$3.getValueOrDefault(vm.borderWidth, globalOpts$1.elements.candlestick.borderWidth);
 		ctx.strokeStyle = helpers$3.getValueOrDefault(borderColor, globalOpts$1.elements.candlestick.borderColor);
 
+		ctx.translate(0.5, 0.5);
+
 		ctx.beginPath();
 		ctx.moveTo(x, h);
 		ctx.lineTo(x, Math.min(o, c));
@@ -343,6 +344,8 @@ var CandlestickElement = FinancialElement.extend({
 		ctx.fillRect(x - vm.width / 2, c, vm.width, o - c);
 		ctx.strokeRect(x - vm.width / 2, c, vm.width, o - c);
 		ctx.closePath();
+
+		ctx.translate(-0.5, -0.5);
 	},
 });
 
